@@ -21,8 +21,8 @@ Current version: **1.1.0**
 
 ## 🔖 Features
 
-- Minimal Alpine based image bundled with the Android emulator and KVM support.
-- Bundles the Java Runtime Environment 11 in the image.
+- Minimal Ubuntu-based image bundled with the Android emulator and KVM support.
+- Bundles Java 21 in the image.
 - Customizable Android version, device type and image types.
 - Port-forwarding of emulator and ADB on the container network interface built-in.
 - Emulator images are wiped each time the emulator re-starts.

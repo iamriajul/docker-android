@@ -4,6 +4,9 @@ on:
   push:
     branches: ['feature/*']
 
+env:
+  DOCKER_IMAGE: ${{ secrets.DOCKER_HUB_USERNAME }}/docker-android
+
 jobs:
 
   # Builds a test image.
@@ -19,5 +22,5 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           push: true
-          tags: halimqarroum/docker-android:test
+          tags: ${{ env.DOCKER_IMAGE }}:test
           build-args: INSTALL_ANDROID_SDK=0

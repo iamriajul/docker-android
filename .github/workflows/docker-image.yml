@@ -42,6 +42,8 @@ jobs:
           push: true
           file: ${{ matrix.gpu.file }}
           tags: ${{ env.DOCKER_IMAGE }}:api-${{ matrix.version }}${{ matrix.image.suffix }}${{ matrix.gpu.suffix }}
+          cache-from: type=gha,scope=api-${{ matrix.version }}${{ matrix.image.suffix }}${{ matrix.gpu.suffix }}
+          cache-to: type=gha,mode=max,scope=api-${{ matrix.version }}${{ matrix.image.suffix }}${{ matrix.gpu.suffix }}
           build-args: |
             API_LEVEL=${{ matrix.version }}
             IMG_TYPE=${{ matrix.image.name }}
@@ -67,4 +69,6 @@ jobs:
           push: true
           file: ${{ matrix.gpu.file }}
           tags: ${{ env.DOCKER_IMAGE }}:minimal${{ matrix.gpu.suffix }}
+          cache-from: type=gha,scope=minimal${{ matrix.gpu.suffix }}
+          cache-to: type=gha,mode=max,scope=minimal${{ matrix.gpu.suffix }}
           build-args: INSTALL_ANDROID_SDK=0

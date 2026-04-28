@@ -1,4 +1,4 @@
-name: Docker Android CI
+name: Docker Android Feature Test
 
 on:
   push:
@@ -23,4 +23,6 @@ jobs:
         with:
           push: true
           tags: ${{ env.DOCKER_IMAGE }}:test
+          cache-from: type=gha,scope=test
+          cache-to: type=gha,mode=max,scope=test
           build-args: INSTALL_ANDROID_SDK=0

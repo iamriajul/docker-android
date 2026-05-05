@@ -55,6 +55,11 @@ else
   export GPU_MODE="swiftshader_indirect"
 fi
 
+# Remove stale instance locks left by SIGKILL — emulator treats their presence as a live conflict.
+rm -f "${ANDROID_AVD_HOME}/android.avd/multiinstance.lock" \
+      "${ANDROID_AVD_HOME}/android.avd/hardware-qemu.ini.lock"
+rm -rf /root/.android/avd/running/
+
 # Asynchronously write updates on the standard output
 # about the state of the boot sequence.
 wait_for_boot &
